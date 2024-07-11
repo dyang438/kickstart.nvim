@@ -403,6 +403,11 @@ require('lazy').setup({
           prompt_title = 'Live Grep in Open Files',
         }
       end, { desc = '[S]earch [/] in Open Files' })
+      vim.keymap.set('n', '<leader>ss', function()
+        builtin.grep_string {
+          prompt_title = 'Grep String in Working Dir',
+        }
+      end, { desc = '[S]earch [s]tring in Working Dir' })
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sn', function()
@@ -592,7 +597,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {},
         --
 
         lua_ls = {
