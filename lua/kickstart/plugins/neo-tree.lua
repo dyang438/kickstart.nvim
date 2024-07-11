@@ -11,15 +11,32 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    { '\\', ':Neotree filesystem reveal right<CR>', { desc = 'NeoTree reveal' } },
+    { 'P', ':Neotree action=toggle_preview<CR>', { desc = 'NeoTree Preview Mode' } },
   },
   opts = {
     filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = false,
+        hide_hidden = false,
+      },
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['P'] = { 'toggle_preview', config = { use_float = false, use_image_nvim = true } },
         },
       },
     },
   },
+  config = function()
+    -- Auto open Neo-tree on startup
+    vim.cmd [[
+      augroup NeotreeOnStartup
+        autocmd!
+        autocmd VimEnter * Neotree filesystem reveal right
+      augroup END
+    ]]
+  end,
+  lazy = false,
 }
