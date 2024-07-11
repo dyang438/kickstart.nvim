@@ -25,12 +25,15 @@ return {
         mappings = {
           ['\\'] = 'close_window',
           ['P'] = { 'toggle_preview', config = { use_float = false, use_image_nvim = true } },
+          ['<space>'] = 'toggle_node',
         },
       },
     },
   },
-  config = function()
+  config = function(_, opts)
     -- Auto open Neo-tree on startup
+    --
+    require('neo-tree').setup(opts)
     vim.cmd [[
       augroup NeotreeOnStartup
         autocmd!
