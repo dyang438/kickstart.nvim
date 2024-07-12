@@ -11,7 +11,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree filesystem reveal right<CR>', { desc = 'NeoTree reveal' } },
+    { ';', ':Neotree filesystem reveal right<CR>', { desc = 'NeoTree reveal' } },
     { 'P', ':Neotree action=toggle_preview<CR>', { desc = 'NeoTree Preview Mode' } },
   },
   opts = {
@@ -23,7 +23,7 @@ return {
       },
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          [';'] = 'close_window',
           ['P'] = { 'toggle_preview', config = { use_float = false, use_image_nvim = true } },
           ['<space>'] = 'toggle_node',
         },
