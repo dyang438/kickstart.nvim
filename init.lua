@@ -167,6 +167,12 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- 07/12 adding commands for terminal and vsplit and split and exiting all buffers
+vim.keymap.set('n', '<leader>wt', ':term<CR>', { noremap = true, silent = true, desc = 'In [W]orkspace, open [T]erminal' })
+vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, desc = 'In [W]orkspace, open [V]ertical split' })
+vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, desc = 'In [W]orkspace, open [H]orizontal split' })
+vim.keymap.set('n', '<leader>wq', ':wqa!<CR>', { noremap = true, desc = 'In [W]orkspace, [Q]uit write all buffers' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
