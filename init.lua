@@ -168,9 +168,11 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- 07/12 adding commands for terminal and vsplit and split and exiting all buffers
-vim.keymap.set('n', '<leader>wt', ':term<CR>', { noremap = true, silent = true, desc = 'In [W]orkspace, open [T]erminal' })
+vim.keymap.set('n', '<leader>wt', ':split<CR> :term<CR>', { noremap = true, silent = true, desc = 'In [W]orkspace, open [T]erminal' })
+vim.keymap.set('n', '<leader>wc', ':vsplit<CR> :term<CR>', { noremap = true, silent = true, desc = 'In [W]orkspace, ' })
+
 vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, desc = 'In [W]orkspace, open [V]ertical split' })
-vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, desc = 'In [W]orkspace, open [H]orizontal split' })
+vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, desc = 'In [W]orkspace, open [H]split' })
 vim.keymap.set('n', '<leader>wq', ':wqa!<CR>', { noremap = true, desc = 'In [W]orkspace, [Q]uit write all buffers' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -179,7 +181,7 @@ vim.keymap.set('n', '<leader>wq', ':wqa!<CR>', { noremap = true, desc = 'In [W]o
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -604,7 +606,7 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
-        --
+        zls = {},
 
         lua_ls = {
           -- cmd = {...},
