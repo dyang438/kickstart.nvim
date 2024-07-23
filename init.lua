@@ -610,6 +610,7 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         zls = {},
+        svelte = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -817,11 +818,11 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'rebelot/kanagawa.nvim',
+    'olimorris/onedarkpro.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       -- Load the colorscheme here.
-      vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'onedark_vivid'
 
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
