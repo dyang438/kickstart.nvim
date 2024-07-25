@@ -613,7 +613,7 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         zls = {},
-
+        svelte = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
