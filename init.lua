@@ -172,6 +172,11 @@ vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, desc = 'In [W
 vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, desc = 'In [W]orkspace, open [H]split' })
 vim.keymap.set('n', '<leader>wq', ':wqa!<CR>', { noremap = true, desc = 'In [W]orkspace, [Q]uit write all buffers' })
 
+-- 07/24 added theme switching binds
+vim.keymap.set('n', '<leader>1', ':colorscheme kanagawa-wave<CR>', { noremap = true, desc = 'Switch to kanagawa wave theme' })
+vim.keymap.set('n', '<leader>2', ':colorscheme onedark_vivid<CR>', { noremap = true, desc = 'Switch to onedark_vivid theme' })
+vim.keymap.set('n', '<leader>3', ':colorscheme tokyonight<CR>', { noremap = true, desc = 'Switch to tokyonight theme' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -812,6 +817,34 @@ require('lazy').setup({
     end,
   },
 
+  { -- You can easily change to a different colorscheme.
+    -- Change the name of the colorscheme plugin below, and then
+    -- change the command in the config to whatever the name of that colorscheme is.
+    --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'rebelot/kanagawa.nvim',
+    config = function()
+      -- Load the colorscheme here.
+      -- vim.cmd.colorscheme 'kanagawa-wave'
+
+      -- You can configure highlights by doing something like:
+      -- vim.cmd.hi 'Comment gui=none'
+    end,
+  },
+  { -- You can easily change to a different colorscheme.
+    -- Change the name of the colorscheme plugin below, and then
+    -- change the command in the config to whatever the name of that colorscheme is.
+    --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'folke/tokyonight.nvim',
+    config = function()
+      -- Load the colorscheme here.
+      -- vim.cmd.colorscheme 'tokyonight'
+
+      -- You can configure highlights by doing something like:
+      -- vim.cmd.hi 'Comment gui=none'
+    end,
+  },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
