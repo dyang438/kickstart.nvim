@@ -1,89 +1,18 @@
---[[
+-- I keep this git repo updated.
 
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-========                                    .-----.          ========
-========         .----------------------.   | === |          ========
-========         |.-""""""""""""""""""-.|   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||   KICKSTART.NVIM   ||   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||                    ||   |-----|          ========
-========         ||:Tutor              ||   |:::::|          ========
-========         |'-..................-'|   |____o|          ========
-========         `"")----------------(""`   ___________      ========
-========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-========       /:::========|  |==hjkl==:::\  \ required \    ========
-========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-========                                                     ========
-=====================================================================
-=====================================================================
-
-What is Kickstart?
-
-  Kickstart.nvim is *not* a distribution.
-
-  Kickstart.nvim is a starting point for your own configuration.
-    The goal is that you can read every line of code, top-to-bottom, understand
-    what your configuration is doing, and modify it to suit your needs.
-
-    Once you've done that, you can start exploring, configuring and tinkering to
-    make Neovim your own! That might mean leaving Kickstart just the way it is for a while
-    or immediately breaking it into modular pieces. It's up to you!
-
-    If you don't know anything about Lua, I recommend taking some time to read through
-    a guide. One possible example which will only take 10-15 minutes:
-      - https://learnxinyminutes.com/docs/lua/
-
-    After understanding a bit more about Lua, you can use `:help lua-guide` as a
-    reference for how Neovim integrates Lua.
-    - :help lua-guide
-    - (or HTML version): https://neovim.io/doc/user/lua-guide.html
-
-Kickstart Guide:
-
-  TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
-
-    If you don't know what this means, type the following:
-      - <escape key>
-      - :
-      - Tutor
-      - <enter key>
-
-    (If you already know the Neovim basics, you can skip this step.)
-
-  Once you've completed that, you can continue working through **AND READING** the rest
-  of the kickstart init.lua.
-
-  Next, run AND READ `:help`.
-    This will open up a help window with some basic information
-    about reading, navigating and searching the builtin help documentation.
-
-    This should be the first place you go to look when you're stuck or confused
-    with something. It's one of my favorite Neovim features.
-
-    MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
-    which is very useful when you're not exactly sure of what you're looking for.
-
-  I have left several `:help X` comments throughout the init.lua
-    These are hints about where to find more information about the relevant settings,
-    plugins or Neovim features used in Kickstart.
-
-   NOTE: Look for lines like this
-
-    Throughout the file. These are for you, the reader, to help you understand what is happening.
-    Feel free to delete them once you know what you're doing, but they should serve as a guide
-    for when you are first encountering a few different constructs in your Neovim config.
-
-If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
-
-I hope you enjoy your Neovim journey,
-- TJ
-
-P.S. You can delete this when you're done too. It's your config now! :)
---]]
-
+if vim.g.neovide then
+  vim.o.guifont = 'JetBrainsMono NFM:h10' -- text below applies for VimScript
+  vim.g.neovide_transparency = 0.95
+  vim.g.neovide_cursor_animation_length = 0.03
+  vim.g.neovide_cursor_trail_size = 0
+  vim.g.neovide_cursor_animate_in_insert_mode = true
+  vim.g.neovide_floating_blur_amount_x = 2.0
+  vim.g.neovide_floating_blur_amount_y = 2.0
+  vim.g.neovide_floating_shadow = true
+  vim.g.neovide_floating_z_height = 10
+  vim.g.neovide_light_angle_degrees = 45
+  vim.g.neovide_light_radius = 5
+end
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -172,10 +101,17 @@ vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, desc = 'In [W
 vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, desc = 'In [W]orkspace, open [H]split' })
 vim.keymap.set('n', '<leader>wq', ':wqa!<CR>', { noremap = true, desc = 'In [W]orkspace, [Q]uit write all buffers' })
 
--- 07/24 added theme switching binds
+-- 07/24 added theme switching binds that restore background color of theme
 vim.keymap.set('n', '<leader>1', ':colorscheme kanagawa-wave<CR>', { noremap = true, desc = 'Switch to kanagawa wave theme' })
 vim.keymap.set('n', '<leader>2', ':colorscheme onedark_vivid<CR>', { noremap = true, desc = 'Switch to onedark_vivid theme' })
 vim.keymap.set('n', '<leader>3', ':colorscheme tokyonight<CR>', { noremap = true, desc = 'Switch to tokyonight theme' })
+
+local function turn_off_background()
+  vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
+end
+
+-- Map leader + 4 to the function
+vim.keymap.set('n', '<leader>4', turn_off_background, { noremap = true, silent = true, desc = 'Turn off background color' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -193,10 +129,10 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- 7/17 update, added alt keybindings to increase scroll speed
 -- 7/30 update, changed to shift because ofc
-vim.keymap.set('n', '<S-h>', '5h', { noremap = true })
-vim.keymap.set('n', '<S-j>', '5j', { noremap = true })
-vim.keymap.set('n', '<S-k>', '5k', { noremap = true })
-vim.keymap.set('n', '<S-l>', '5l', { noremap = true })
+vim.keymap.set('n', '<S-h>', '8h', { noremap = true })
+vim.keymap.set('n', '<S-j>', '8j', { noremap = true })
+vim.keymap.set('n', '<S-k>', '8k', { noremap = true })
+vim.keymap.set('n', '<S-l>', '8l', { noremap = true })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -824,9 +760,11 @@ require('lazy').setup({
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'rebelot/kanagawa.nvim',
+    -- priority = 1000,
     config = function()
       -- Load the colorscheme here.
       -- vim.cmd.colorscheme 'kanagawa-wave'
+      -- vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
 
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
@@ -855,7 +793,9 @@ require('lazy').setup({
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       -- Load the colorscheme here.
+
       vim.cmd.colorscheme 'onedark_vivid'
+      vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
 
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
