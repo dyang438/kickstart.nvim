@@ -134,6 +134,10 @@ vim.keymap.set('n', '<S-j>', '8j', { noremap = true })
 vim.keymap.set('n', '<S-k>', '8k', { noremap = true })
 vim.keymap.set('n', '<S-l>', '8l', { noremap = true })
 
+vim.keymap.set('v', '<S-h>', '8h', { noremap = true })
+vim.keymap.set('v', '<S-j>', '8j', { noremap = true })
+vim.keymap.set('v', '<S-k>', '8k', { noremap = true })
+vim.keymap.set('v', '<S-l>', '8l', { noremap = true })
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
