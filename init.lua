@@ -192,10 +192,11 @@ vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- 7/17 update, added alt keybindings to increase scroll speed
-vim.keymap.set('n', '<A-h>', '5h', { noremap = true })
-vim.keymap.set('n', '<A-j>', '5j', { noremap = true })
-vim.keymap.set('n', '<A-k>', '5k', { noremap = true })
-vim.keymap.set('n', '<A-l>', '5l', { noremap = true })
+-- 7/30 update, changed to shift because ofc
+vim.keymap.set('n', '<S-h>', '5h', { noremap = true })
+vim.keymap.set('n', '<S-j>', '5j', { noremap = true })
+vim.keymap.set('n', '<S-k>', '5k', { noremap = true })
+vim.keymap.set('n', '<S-l>', '5l', { noremap = true })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
