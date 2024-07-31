@@ -799,7 +799,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
 
       vim.cmd.colorscheme 'onedark_vivid'
-      vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
+      -- vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
 
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
