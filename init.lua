@@ -128,12 +128,16 @@ vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- 7/17 update, added alt keybindings to increase scroll speed
--- 7/30 update, changed to shift because ofc
-vim.keymap.set('n', '<S-h>', '8h', { noremap = true })
-vim.keymap.set('n', '<S-j>', '8j', { noremap = true })
-vim.keymap.set('n', '<S-k>', '8k', { noremap = true })
-vim.keymap.set('n', '<S-l>', '8l', { noremap = true })
+-- 7/30 update, changed to shift because ofc and also made visual less annoying with shift
+vim.keymap.set('n', '<S-h>', '5h', { noremap = true })
+vim.keymap.set('n', '<S-j>', '5j', { noremap = true })
+vim.keymap.set('n', '<S-k>', '5k', { noremap = true })
+vim.keymap.set('n', '<S-l>', '5l', { noremap = true })
 
+vim.keymap.set('v', '<S-h>', '5h', { noremap = true })
+vim.keymap.set('v', '<S-j>', '5j', { noremap = true })
+vim.keymap.set('v', '<S-k>', '5k', { noremap = true })
+vim.keymap.set('v', '<S-l>', '5l', { noremap = true })
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
@@ -795,7 +799,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
 
       vim.cmd.colorscheme 'onedark_vivid'
-      vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
+      -- vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
 
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
