@@ -2,7 +2,7 @@
 
 if vim.g.neovide then
   vim.o.guifont = 'JetBrainsMono NFM:h10' -- text below applies for VimScript
-  vim.g.neovide_transparency = 0.95
+  vim.g.neovide_transparency = 0.6
   vim.g.neovide_cursor_animation_length = 0.03
   vim.g.neovide_cursor_trail_size = 0
   vim.g.neovide_cursor_animate_in_insert_mode = true
@@ -896,7 +896,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  --  { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
