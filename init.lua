@@ -1,7 +1,6 @@
 -- I keep this git repo updated.
 
 if vim.g.neovide then
-  vim.o.guifont = 'JetBrainsMono NFM:h10' -- text below applies for VimScript
   vim.g.neovide_transparency = 0.6
   vim.g.neovide_cursor_animation_length = 0.03
   vim.g.neovide_cursor_trail_size = 0
@@ -20,7 +19,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -99,12 +98,19 @@ vim.keymap.set('n', '<leader>wc', ':vsplit<CR> :term<CR>', { noremap = true, sil
 
 vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, desc = 'In [W]orkspace, open [V]ertical split' })
 vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, desc = 'In [W]orkspace, open [H]split' })
-vim.keymap.set('n', '<leader>wq', ':wqa!<CR>', { noremap = true, desc = 'In [W]orkspace, [Q]uit write all buffers' })
+vim.keymap.set('n', '<leader>a', ':wqa!<CR>', { noremap = true, desc = 'Quit write [a]ll buffers' })
+vim.keymap.set('n', '<leader>A', ':qa!<CR>', { noremap = true, desc = 'Quit [A]ll buffers' })
 
 -- 07/24 added theme switching binds that restore background color of theme
 vim.keymap.set('n', '<leader>1', ':colorscheme kanagawa-wave<CR>', { noremap = true, desc = 'Switch to kanagawa wave theme' })
 vim.keymap.set('n', '<leader>2', ':colorscheme onedark_vivid<CR>', { noremap = true, desc = 'Switch to onedark_vivid theme' })
 vim.keymap.set('n', '<leader>3', ':colorscheme tokyonight<CR>', { noremap = true, desc = 'Switch to tokyonight theme' })
+
+-- 08/26 added vim.diagnostic.open_float()
+vim.keymap.set('n', '<leader>g', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, desc = 'Switch to tokyonight theme' })
+
+-- 08/28 added vim.diagnostic.open_float()
+vim.keymap.set('n', 't', ':Telescope find_files<CR>', { noremap = true, desc = 'Open Telescope Files' })
 
 local function turn_off_background()
   vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
@@ -256,6 +262,7 @@ require('lazy').setup({
   -- you do for a plugin at the top level, you can do for a dependency.
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
+  --
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -319,6 +326,8 @@ require('lazy').setup({
           },
         },
       }
+
+      require('telescope.builtin').fd()
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
@@ -892,7 +901,7 @@ require('lazy').setup({
   require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
