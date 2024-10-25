@@ -30,16 +30,5 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    -- Auto open Neo-tree on startup
-    --
-    require('neo-tree').setup(opts)
-    vim.cmd [[
-      augroup NeotreeOnStartup
-        autocmd!
-        autocmd VimEnter * Neotree filesystem reveal right
-      augroup END
-    ]]
-  end,
   lazy = false,
 }
